@@ -100,15 +100,17 @@ const SearchForm = () => {
     <FormWrapperHome>
       <ComponentWrapper className='operation-select'>
         <Select 
-          defaultValue='Alquiler'
+          defaultValue={getOperationType.options[0].label}
           onChange={handlerOperationType}
           bordered={false}
           suffixIcon={<FaAngleDown className='operation-marker'/>}
           className='selectbox'
           >
-          <Option value='alquiler'>Alquiler</Option>
-          <Option value='venta'>Venta</Option>
-          <Option value='compra'>Compra</Option>
+            {
+              getOperationType.options.map(item => {
+                return <Option key={item.value} value={item.value}>{item.label}</Option>
+              })
+            }
         </Select>        
       </ComponentWrapper>
       <ComponentWrapper className='map-input'>
