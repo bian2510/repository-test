@@ -83,11 +83,6 @@ export const SearchWrapper = styled.div`
   bottom: 81px;
   z-index: 1;
 
-  @media only screen and (min-width: 569px) and (max-width: 991px) {
-    width: 414px;
-    left: 30px;
-  }
-
   @media only screen and (max-width: 480px) {
     width: calc(100% - 30px);
     padding: 15px;
@@ -108,7 +103,145 @@ export const SearchWrapper = styled.div`
     margin-bottom: 10px;
   }
 `;
+export const FormWrapperHome = styled.div`
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-row-gap: 8px;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: ${themeGet('color.2', '#F7F7F7')};
+  border-radius: 3px 0 0 3px;
+  /* min-height: 60px; */
+  margin-top: 10px;
 
+  .ant-checkbox-checked .ant-checkbox-inner {
+    background-color: ${themeGet('primary.0', '#008489')};
+    border-color: ${themeGet('primary.0', '#008489')};
+  }
+
+  form{
+    width: 100%;
+  }
+
+  .selectbox{
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding-left: 10px;
+    font-size: 15px;
+
+    span{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      svg{
+      fill: ${themeGet('primary.0', '#008489')};
+      font-size: 20px;
+
+      }
+    }
+  }
+    .operation-select{
+      grid-row: 1 / 2;
+      grid-column: 1 / 4;
+      width: 100%;
+
+    }
+    .map-input{
+      grid-row: 2 / 3;
+      grid-column: 1 / 4;
+    }
+
+    Button{
+      grid-row: 4 / 5;
+      grid-column: 1 / 4;
+    }
+    .property-option{
+      grid-column: 1 / 4;
+      grid-row: 3 / 4;
+      height: 60px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+
+    }
+
+    @media screen and (min-width: 560px){
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+    }
+
+    @media screen and (min-width: 768px){
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+
+
+      .operation-select{
+        grid-row: 1 / 2;
+        grid-column: 1 / 2;
+        width: 100%
+      }
+      .map-input{
+        grid-row: 1 / 2;
+        grid-column: 2 / 3;
+      }
+      .property-option{
+        grid-row: 2 / 3;
+        grid-column: 1 / 3;
+        justify-content: space-between;
+      }
+      Button{
+        grid-row: 3 / 4;
+        grid-column: 1 / 4;
+      }
+
+
+
+    }
+    @media screen and (min-width: 991px){
+      grid-template-columns: 1fr 1fr 180px;
+
+      Button{
+        grid-row: 1 / 2;
+        grid-column: 3 / 4;
+      }
+
+    }
+
+  /* submit button style */
+  button[type='submit'].ant-btn {
+    min-width: 157px;
+    height: 60px;
+    color: ${themeGet('color.1', '#ffffff')};
+    background-color: ${themeGet('primary.0', '#008489')};
+    border-radius: 0 3px 3px 0;
+    border: 0;
+    box-shadow: none;
+    font-size: 15px;
+    font-weight: 700;
+    text-shadow: none;
+
+    @media only screen and (max-width: 991px) {
+      min-width: 100%;
+      border-radius: 0 0 3px 3px;
+    }
+
+    @media only screen and (max-width: 480px) {
+      height: 47px;
+    }
+
+    &::after {
+      display: none;
+    }
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+
+`;
 export const FormWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -155,6 +288,7 @@ export const FormWrapper = styled.div`
       opacity: 0.85;
     }
   }
+
 `;
 
 export const ComponentWrapper = styled.div`
@@ -171,6 +305,7 @@ export const ComponentWrapper = styled.div`
       right: 25px;
     }
   }
+
 
   /* map auto complete style */
   .map_autocomplete {
@@ -445,11 +580,12 @@ export const ComponentWrapper = styled.div`
     top: auto;
     &.map-marker,
     &.calendar,
-    &.user-friends {
+    &.user-friends{
       left: 15px;
       right: auto;
       fill: ${themeGet('primary.0', '#008489')};
     }
+
 
     &.calendar {
       @media only screen and (max-width: 480px) {
@@ -495,9 +631,14 @@ export const RoomGuestWrapper = styled.div`
 
 export const ItemWrapper = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
+  flex-direction: column;
+  align-items: left;
+  margin: 0 0 20px 20px;
+
+  strong {
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
 
   &:last-child {
     margin-bottom: 5px;
@@ -516,5 +657,4 @@ export const ItemWrapper = styled.div`
     }
   }
 `;
-
 export default BannerWrapper;
