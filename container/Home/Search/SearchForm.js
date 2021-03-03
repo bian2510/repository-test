@@ -13,14 +13,11 @@ import { getOperationType, getPropertyOption } from '../../Listing/Search/Search
 import { LISTING_POSTS_PAGE } from '../../../settings/constant';
 import { SearchContext } from '../../../context/SearchProvider';
 
-
-
 const SearchForm = () => {
   const { state, dispatch } = useContext(SearchContext);
   const [operationType, setOperationType] = useState([])
   const [propertyOption, setPropertyOption] = useState([])
   const [mapValue, setMapValue] = useState([]);
-
 
   const updatevalueFunc = (event) => {
     const { searchedPlaceAPIData } = event;
@@ -60,7 +57,6 @@ const SearchForm = () => {
       operation_type,
       property_option,
     };
-    console.log(query)
 
     for (const key in query) {
       if (query[key] === '' || query[key] === null || query[key] === 0) {
