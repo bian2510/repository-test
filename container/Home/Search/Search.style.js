@@ -105,13 +105,12 @@ export const SearchWrapper = styled.div`
 `;
 export const FormWrapperHome = styled.div`
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-rows: repeat(4, 1fr);
   grid-row-gap: 8px;
   align-items: center;
   justify-content: flex-end;
   background-color: ${themeGet('color.2', '#F7F7F7')};
   border-radius: 3px 0 0 3px;
-  /* min-height: 60px; */
   margin-top: 10px;
 
   .ant-checkbox-checked .ant-checkbox-inner {
