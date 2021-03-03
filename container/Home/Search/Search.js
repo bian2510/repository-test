@@ -13,7 +13,6 @@ import bannerBg1 from 'assets/images/banner/1.jpg';
 import bannerBg2 from 'assets/images/banner/2.jpg';
 import bannerBg3 from 'assets/images/banner/3.jpg';
 
-
 const HomeSearch = ({ searchTitleStyle, searchDescriptionStyle }) => {
   return (
     <BannerWrapper>
@@ -35,7 +34,6 @@ const HomeSearch = ({ searchTitleStyle, searchDescriptionStyle }) => {
           </GlideSlide>
         </>
       </GlideCarousel>
-
       <Container>
         <SearchWrapper>
           <Heading
