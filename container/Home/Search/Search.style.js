@@ -103,6 +103,7 @@ export const SearchWrapper = styled.div`
     margin-bottom: 10px;
   }
 `;
+
 export const FormWrapperHome = styled.div`
   display: grid;
   grid-template-rows: repeat(4, 1fr);
@@ -118,10 +119,6 @@ export const FormWrapperHome = styled.div`
     border-color: ${themeGet('primary.0', '#008489')};
   }
 
-  form{
-    width: 100%;
-  }
-
   .selectbox{
     width: 100%;
     height: 100%;
@@ -133,6 +130,7 @@ export const FormWrapperHome = styled.div`
       display: flex;
       align-items: center;
       justify-content: space-between;
+      width: 35px;
 
       svg{
       fill: ${themeGet('primary.0', '#008489')};
