@@ -38,3 +38,25 @@ export const getPropertyType = {
     { label: 'Landscape', value: 'landscape' },
   ],
 };
+export const getOperationType = {
+  id: 3,
+  name: 'Operation type',
+  identifier: 'operation-type',
+  options: [
+    { label: 'Alquiler', value: 'alquiler' },
+    { label: 'Venta', value: 'venta' },
+    { label: 'Compra', value: 'compra' },
+  ],
+};
+export const getPropertyOption = {
+  id: 4,
+  name: 'Property option',
+  identifier: 'property-option',
+  options: [
+    { label: 'Departamento', value: 'departamento' },
+    { label: 'Casa', value: 'casa' },
+    { label: 'PH', value: 'ph' },
+    { label: 'Local', value: 'local'},
+    { label: 'Cochera', value: 'cochera'}
+  ],
+};

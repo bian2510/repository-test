@@ -34,7 +34,6 @@ const HomeSearch = ({ searchTitleStyle, searchDescriptionStyle }) => {
           </GlideSlide>
         </>
       </GlideCarousel>
-
       <Container>
         <SearchWrapper>
           <Heading
@@ -70,7 +69,7 @@ HomeSearch.defaultProps = {
     fontSize: '15px',
     lineHeight: '18px',
     mb: '30px',
-  },
+  }
 };
 
 export default HomeSearch;
