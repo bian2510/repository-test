@@ -15,7 +15,9 @@ import { SearchContext } from '../../../context/SearchProvider';
 
 const SearchForm = () => {
   const { state, dispatch } = useContext(SearchContext);
-  const [operationType, setOperationType] = useState([])
+  const [operationType, setOperationType] = useState([
+    getOperationType.options[0].label
+  ])
   const [propertyOption, setPropertyOption] = useState([])
   const [mapValue, setMapValue] = useState([]);
 
