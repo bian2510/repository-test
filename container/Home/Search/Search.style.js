@@ -3,7 +3,7 @@ import { themeGet } from '@styled-system/theme-get';
 
 const BannerWrapper = styled.div`
   width: 100%;
-  min-height: 100vh;
+  min-height: 70vh;
   position: relative;
   background-color: ${themeGet('color.1', '#ffffff')};
 
@@ -57,7 +57,7 @@ const BannerWrapper = styled.div`
 
   > div {
     position: relative;
-    min-height: 100vh;
+    min-height: 70vh;
   }
 
   &:after {
@@ -93,9 +93,13 @@ export const SearchWrapper = styled.div`
     }
   }
 
+  @media only screen and (min-width: 481px) and (max-width: 768px){
+    padding: 15px 20px;
+  }
+
   > div {
     @media only screen and (min-width: 481px) {
-      margin-top: 30px;
+      margin-top: 15px;
     }
   }
 
@@ -133,18 +137,18 @@ export const FormWrapperHome = styled.div`
       width: 35px;
 
       svg{
-      fill: ${themeGet('primary.0', '#008489')};
-      font-size: 20px;
-
+        fill: ${themeGet('primary.0', '#008489')};
+        font-size: 20px;
       }
     }
   }
+
     .operation-select{
       grid-row: 1 / 2;
       grid-column: 1 / 4;
       width: 100%;
-
     }
+
     .map-input{
       grid-row: 2 / 3;
       grid-column: 1 / 4;
@@ -154,6 +158,7 @@ export const FormWrapperHome = styled.div`
       grid-row: 4 / 5;
       grid-column: 1 / 4;
     }
+
     .property-option{
       grid-column: 1 / 4;
       grid-row: 3 / 4;
@@ -161,7 +166,6 @@ export const FormWrapperHome = styled.div`
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-
     }
 
     @media screen and (min-width: 560px){
@@ -174,28 +178,27 @@ export const FormWrapperHome = styled.div`
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
 
-
       .operation-select{
         grid-row: 1 / 2;
         grid-column: 1 / 2;
         width: 100%
       }
+
       .map-input{
         grid-row: 1 / 2;
         grid-column: 2 / 3;
       }
+
       .property-option{
         grid-row: 2 / 3;
         grid-column: 1 / 3;
         justify-content: space-between;
       }
+
       Button{
         grid-row: 3 / 4;
         grid-column: 1 / 4;
       }
-
-
-
     }
     @media screen and (min-width: 991px){
       grid-template-columns: 1fr 1fr 180px;
@@ -204,7 +207,6 @@ export const FormWrapperHome = styled.div`
         grid-row: 1 / 2;
         grid-column: 3 / 4;
       }
-
     }
 
   /* submit button style */
@@ -302,7 +304,6 @@ export const ComponentWrapper = styled.div`
       right: 25px;
     }
   }
-
 
   /* map auto complete style */
   .map_autocomplete {
