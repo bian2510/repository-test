@@ -147,7 +147,6 @@ const SearchForm = () => {
         onChange={(value) => handlerPropertyOption(value)}
       />
     </FormWrapperHome>
-  
   );
 };
 
