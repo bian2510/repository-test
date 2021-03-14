@@ -6,8 +6,6 @@ const SocialLogin = () => {
   const { signUp } = useContext(AuthContext);
   const [state, setState] = useState({
     facebook: false,
-    github: false,
-    firebase: false,
     google: false,
   });
   const handleSocialAuth = (key) => {
@@ -37,32 +35,6 @@ const SocialLogin = () => {
             onClick={() => handleSocialAuth('facebook')}
           >
             Facebook
-          </Button>
-        </Col>
-        <Col span={12}>
-          <Button
-            loading={state.github}
-            className="github-btn"
-            type="primary"
-            style={{ width: '100%', marginBottom: 16 }}
-            size="large"
-            onClick={() => handleSocialAuth('github')}
-          >
-            Github
-          </Button>
-        </Col>
-      </Row>
-      <Row gutter={16} style={{ marginBottom: '37px' }}>
-        <Col span={12}>
-          <Button
-            loading={state.firebase}
-            className="firebase-btn"
-            type="primary"
-            style={{ width: '100%', marginBottom: 16 }}
-            size="large"
-            onClick={() => handleSocialAuth('firebase')}
-          >
-            Firebase
           </Button>
         </Col>
         <Col span={12}>
