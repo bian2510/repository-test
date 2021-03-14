@@ -166,6 +166,12 @@ export const FormWrapperHome = styled.div`
       display: flex;
       flex-wrap: wrap;
       align-items: center;
+      padding: 8px 21px;
+
+      label{
+          margin-right: 15px;
+          min-width: 70px;
+        }
     }
 
     @media screen and (min-width: 560px){
@@ -192,7 +198,10 @@ export const FormWrapperHome = styled.div`
       .property-option{
         grid-row: 2 / 3;
         grid-column: 1 / 3;
-        justify-content: space-between;
+
+        label{
+          margin-right: 30px;
+        }
       }
 
       Button{
