@@ -1,25 +1,32 @@
 import React, { useContext } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { MdLockOpen } from 'react-icons/md';
-import { Input, Switch, Button } from 'antd';
+import { Input, Switch, Button, Select } from 'antd';
 import FormControl from 'components/UI/FormControl/FormControl';
 import { AuthContext } from 'context/AuthProvider';
 import { FieldWrapper, SwitchWrapper, Label } from '../Auth.style';
+import { getDocumentType } from '../../Listing/SignUp/SingUpParams';
+import { FaAngleDown } from 'react-icons/fa';
+import UploadImage from '../UploadImage';
 
 export default () => {
   const { signUp } = useContext(AuthContext);
-  const { control, watch, errors, handleSubmit } = useForm({
+  const { getValues, control, watch, errors, handleSubmit } = useForm({
     mode: 'onChange',
   });
-  const password = watch('password');
-  const confirmPassword = watch('confirmPassword');
+  const inputPassword = getValues().password
+  const confirmPasswordInput = watch('confirmPassword');
+  const { Option } = Select
   const onSubmit = (data) => {
-    signUp(data);
+    if (inputPassword === confirmPasswordInput) {
+      signUp(data);
+    } 
   };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <FormControl
-        label="Username"
+        label="Name *"
         htmlFor="username"
         error={
           errors.username && (
@@ -43,7 +50,55 @@ export default () => {
         />
       </FormControl>
       <FormControl
-        label="Email"
+        label="Last name *"
+        htmlFor="lastName"
+        error={
+          errors.lastName && (
+            <>
+              {errors.lastName?.type === 'required' && (
+                <span>This field is required!</span>
+              )}
+            </>
+          )
+        }
+      >
+        <Controller
+          as={<Input />}
+          id="lastName"
+          name="lastName"
+          defaultValue=""
+          control={control}
+          rules={{
+            required: true,
+          }}
+        />
+      </FormControl>
+      <FormControl
+        label="Phone number *"
+        htmlFor="phone"
+        error={
+          errors.phone && (
+            <>
+              {errors.phone?.type === 'required' && (
+                <span>This field is required!</span>
+              )}
+            </>
+          )
+        }
+      >
+        <Controller
+          as={<Input />}
+          id="phone"
+          name="phone"
+          defaultValue=""
+          control={control}
+          rules={{
+            required: true,
+          }}
+        />
+      </FormControl>
+      <FormControl
+        label="Email *"
         htmlFor="email"
         error={
           errors.email && (
@@ -72,7 +127,7 @@ export default () => {
         />
       </FormControl>
       <FormControl
-        label="Password"
+        label="Password *"
         htmlFor="password"
         error={
           errors.password && (
@@ -81,7 +136,7 @@ export default () => {
                 <span>This field is required!</span>
               )}
               {errors.password?.type === 'minLength' && (
-                <span>Password must be at lest 6 characters!</span>
+                <span>Password must be at lest 8 characters!</span>
               )}
               {errors.password?.type === 'maxLength' && (
                 <span>Password must not be longer than 20 characters!</span>
@@ -96,18 +151,25 @@ export default () => {
           control={control}
           id="password"
           name="password"
-          rules={{ required: true, minLength: 6, maxLength: 20 }}
+          rules={{ required: true, minLength: 8, maxLength: 20,}}
         />
       </FormControl>
       <FormControl
-        label="Confirm password"
+        label="Confirm password *"
         htmlFor="confirmPassword"
-        error={
-          confirmPassword &&
-          password !== confirmPassword && (
-            <span>Your password is not same!</span>
-          )
-        }
+        error={ errors.confirmPassword && (
+            <>
+              {errors.confirmPassword?.type === 'register' && (
+                <span>This field is required!</span>
+              )}
+              {
+                confirmPasswordInput !== inputPassword
+                ? errors.confirmPassword && <span>password must be equals</span>
+                : ''
+              }
+            </>
+            )           
+        }        
       >
         <Controller
           as={<Input.Password />}
@@ -115,6 +177,55 @@ export default () => {
           control={control}
           id="confirmPassword"
           name="confirmPassword"
+          rules={{ 
+            required: true,
+          }}
+        />
+      </FormControl>
+      <FormControl
+        label="Document Type"
+        htmlFor="documentType"
+        error={''}
+      >
+        <Controller
+          as={<Select>
+            {
+              getDocumentType.options.map(item => {
+                return <Option key={item.value} value={item.value}>{item.label}</Option>
+              })
+            }
+          </Select>}
+          defaultValue=''
+          control={control}
+          suffixIcon={<FaAngleDown className='operation-marker'/>}
+          id="documentType"
+          name="documentType"
+        />
+      </FormControl>
+      <FormControl
+        label="Document number"
+        htmlFor="document"
+        error={''}
+      >
+        <Controller
+          as={<Input />}
+          id="document"
+          name="document"
+          defaultValue=""
+          control={control}
+        />
+      </FormControl>
+      <FormControl
+        label="Upload your photo"
+        htmlFor="photo"
+        error={''}
+      >
+        <Controller
+          as={<UploadImage />}
+          id="photo"
+          name="photo"
+          defaultValue=""
+          control={control}
         />
       </FormControl>
       <FieldWrapper>

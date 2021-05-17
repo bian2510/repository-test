@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Router from 'next/router';
+import axios from 'axios'
 
 export const AuthContext = React.createContext();
 
@@ -16,17 +17,35 @@ const AuthProvider = (props) => {
   const [user, setUser] = useState({});
 
   const signIn = (params) => {
-    console.log(params, 'sign in form Props');
+    console.log(params, 'sign in form Props'); 
     setUser(fakeUserData);
     setLoggedIn(true);
     Router.push(`/`);
   };
 
-  const signUp = (params) => {
-    console.log(params, 'sign up form Props');
-    setUser(fakeUserData);
-    setLoggedIn(true);
-    Router.push(`/`);
+  const signUp = async (params) => {
+    const { username, lastName, email, phone, password, document, documentType } = params
+    let phoneNumber = parseInt(phone)
+    try {
+      const response = await axios.post('http://localhost:4000/api/users/signup', {
+        user: {
+          name: username,
+          last_name: lastName,
+          email,
+          phone: phoneNumber,
+          password,
+          document,
+          document_type: documentType,
+          type: 'client'
+        },
+      })
+      const { data } = response
+      setUser(data.user);
+      setLoggedIn(true);
+      Router.push(`/`);
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   const logOut = () => {

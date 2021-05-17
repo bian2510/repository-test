@@ -21,7 +21,7 @@ const SignUp = () => {
     <Wrapper>
       <FormWrapper>
         <Logo withLink linkTo="/" src={tripFinder} title="TripFinder." />
-        <Title>Welcome To TripFinder</Title>
+        <Title>Welcome To DudiProps</Title>
         <TitleInfo>Please Register for your account</TitleInfo>
         <SignUpForm />
         <Divider>Or Register Up With </Divider>

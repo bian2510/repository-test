@@ -166,6 +166,7 @@ export const FormWrapperHome = styled.div`
       display: flex;
       flex-wrap: wrap;
       align-items: center;
+      padding: 10px 21px
     }
 
     @media screen and (min-width: 560px){
