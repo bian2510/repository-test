@@ -18,12 +18,12 @@ const AuthProvider = (props) => {
 
   const signIn = (params) => {
     console.log(params, 'sign in form Props'); 
-    setUser(fakeUserData);
-    setLoggedIn(true);
-    Router.push(`/`);
+        setUser(fakeUserData);
+        setLoggedIn(true);
+        Router.push(`/`);
   };
 
-  const signUp = async (params) => {
+  const signUp = async (params, setErrorObject) => {
     const { username, lastName, email, phone, password, document, documentType } = params
     let phoneNumber = parseInt(phone)
     try {
@@ -43,8 +43,8 @@ const AuthProvider = (props) => {
       setUser(data.user);
       setLoggedIn(true);
       Router.push(`/`);
-    } catch (error) {
-      console.log(error)
+    } catch (err) {
+      setErrorObject(err.response.data.error)
     }
   };
 

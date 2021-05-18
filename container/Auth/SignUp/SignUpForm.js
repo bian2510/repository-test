@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { MdLockOpen } from 'react-icons/md';
 import { Input, Switch, Button, Select } from 'antd';
@@ -8,19 +8,19 @@ import { FieldWrapper, SwitchWrapper, Label } from '../Auth.style';
 import { getDocumentType } from '../../Listing/SignUp/SingUpParams';
 import { FaAngleDown } from 'react-icons/fa';
 import UploadImage from '../UploadImage';
+import { emptyObjectError } from '../../../library/helpers/Errors/emptyObjectError';
 
 export default () => {
+  const pass = useRef({})
+  const [ errorObject, setErrorObject ] = useState(emptyObjectError)
   const { signUp } = useContext(AuthContext);
-  const { getValues, control, watch, errors, handleSubmit } = useForm({
+  const { control, watch, errors, handleSubmit } = useForm({
     mode: 'onChange',
   });
-  const inputPassword = getValues().password
-  const confirmPasswordInput = watch('confirmPassword');
+  pass.current = watch('password', '')
   const { Option } = Select
   const onSubmit = (data) => {
-    if (inputPassword === confirmPasswordInput) {
-      signUp(data);
-    } 
+      signUp(data, setErrorObject);
   };
 
   return (
@@ -125,6 +125,9 @@ export default () => {
             pattern: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
           }}
         />
+        {
+         errorObject.email.map(error =>  <span key={error} style={{color: 'red'}}>{error === 'has already been taken' ? 'Email en uso' : ''}</span>)
+        }
       </FormControl>
       <FormControl
         label="Password *"
@@ -162,11 +165,9 @@ export default () => {
               {errors.confirmPassword?.type === 'register' && (
                 <span>This field is required!</span>
               )}
-              {
-                confirmPasswordInput !== inputPassword
-                ? errors.confirmPassword && <span>password must be equals</span>
-                : ''
-              }
+               {errors.confirmPassword?.type === 'validate' && (
+                <span>Password must be equals</span>
+              )}
             </>
             )           
         }        
@@ -179,6 +180,7 @@ export default () => {
           name="confirmPassword"
           rules={{ 
             required: true,
+            validate: value => value === pass.current
           }}
         />
       </FormControl>
