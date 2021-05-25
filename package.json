@@ -12,6 +12,7 @@
     "@redq/reuse-modal": "^1.2.4",
     "@styled-system/theme-get": "^5.1.2",
     "antd": "^4.2.2",
+    "axios": "^0.21.1",
     "dayjs": "^1.8.28",
     "esm": "^3.2.25",
     "history": "^5.0.0",

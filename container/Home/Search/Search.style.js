@@ -166,9 +166,9 @@ export const FormWrapperHome = styled.div`
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      padding: 8px 21px;
-
-      label{
+      padding: 10px 21px;
+      
+        label{
           margin-right: 15px;
           min-width: 70px;
         }

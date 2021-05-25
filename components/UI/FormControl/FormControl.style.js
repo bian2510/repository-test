@@ -12,6 +12,16 @@ const Wrapper = styled.div`
     font-weight: 600;
     margin-bottom: 15px;
   }
+  
+  .ant-select-arrow{
+    height: 20px;
+    width: 20px;
+    
+    svg{
+      fill: ${themeGet('primary.0', '#008489')};
+      font-size: 20px;
+    }
+  }
 
   .ant-input,
   .ant-picker,
