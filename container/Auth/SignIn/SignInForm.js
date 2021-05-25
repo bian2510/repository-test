@@ -60,7 +60,7 @@ const SignInForm = () => {
                 <span>This field is required!</span>
               )}
               {errors.password?.type === 'minLength' && (
-                <span>Password must be at lest 6 characters!</span>
+                <span>Password must be at lest 8 characters!</span>
               )}
               {errors.password?.type === 'maxLength' && (
                 <span>Password must not be longer than 20 characters!</span>

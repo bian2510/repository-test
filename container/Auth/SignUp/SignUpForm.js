@@ -7,7 +7,6 @@ import { AuthContext } from 'context/AuthProvider';
 import { FieldWrapper, SwitchWrapper, Label } from '../Auth.style';
 import { getDocumentType } from '../../Listing/SignUp/SingUpParams';
 import { FaAngleDown } from 'react-icons/fa';
-import UploadImage from '../UploadImage';
 import { emptyObjectError } from '../../../library/helpers/Errors/emptyObjectError';
 
 export default () => {
@@ -213,19 +212,6 @@ export default () => {
           as={<Input />}
           id="document"
           name="document"
-          defaultValue=""
-          control={control}
-        />
-      </FormControl>
-      <FormControl
-        label="Upload your photo"
-        htmlFor="photo"
-        error={''}
-      >
-        <Controller
-          as={<UploadImage />}
-          id="photo"
-          name="photo"
           defaultValue=""
           control={control}
         />
