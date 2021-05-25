@@ -20,7 +20,7 @@ export default () => {
   pass.current = watch('password', '')
   const { Option } = Select
   const onSubmit = (data) => {
-      signUp(data, setErrorObject);
+      signUp(data, setErrorObject, errorObject);
   };
 
   return (
@@ -126,7 +126,7 @@ export default () => {
           }}
         />
         {
-         errorObject.email.map(error =>  <span key={error} style={{color: 'red'}}>{error === 'has already been taken' ? 'Email en uso' : ''}</span>)
+         errorObject.email.map(error =>  <span key={error} style={{color: '#F9503D'}}>{error === 'has already been taken' ? 'Email en uso' : ''}</span>)
         }
       </FormControl>
       <FormControl
