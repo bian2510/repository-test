@@ -25,14 +25,14 @@ const AuthProvider = (props) => {
 
   const signUp = async (params, setErrorObject) => {
     const { username, lastName, email, phone, password, document, documentType } = params
-    let phoneNumber = parseInt(phone)
+
     try {
       const response = await axios.post('http://localhost:4000/api/users/signup', {
         user: {
           name: username,
           last_name: lastName,
           email,
-          phone: phoneNumber,
+          phone: phone,
           password,
           document,
           document_type: documentType,
